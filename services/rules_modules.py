@@ -48,7 +48,7 @@ def verify_min_digit_data(password: str, rules: list):
     return count_numerical(password)>= rule[0]["value"] if rule else True
 
 def verify_no_repeated_data(password: str, rules: list):
-    rule = [cdict for cdict in rules if cdict["rule"] == "minDigit"]
+    rule = [cdict for cdict in rules if cdict["rule"] == "noRepeted"]
     return not(is_repeated(password)) if rule else True
 
 def verify_is_valid_password(password: str, rules: list):
@@ -60,4 +60,25 @@ def verify_is_valid_password(password: str, rules: list):
     result.append(verify_min_digit_data(password, rules))
     result.append(verify_no_repeated_data(password, rules))
     return sum(result) == 6
+
+def return_verify(password: str, rules: list):
+    result={"verify": False, "noMatch":[]}
+    if not (verify_minsize_data(password, rules)):
+        result["noMatch"].append("minSize")
+    if not (verify_min_special_char_data(password, rules)):
+        result["noMatch"].append("minSpecialChars")
+    if not (verify_min_uppercase_data(password, rules)):
+        result["noMatch"].append("minUppercase")
+    if not (verify_min_lowercase_data(password, rules)):
+        result["noMatch"].append("minLowercase")
+    if not (verify_min_digit_data(password, rules)):
+        result["noMatch"].append("minDigit")
+    if not (verify_no_repeated_data(password, rules)):
+        result["noMatch"].append("noRepeted")
+    if len(result["noMatch"])==0:
+        result["verify"]=True
+    return result
+
+    
+
     

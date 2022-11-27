@@ -3,7 +3,7 @@ from enum import Enum
 import re
 from fastapi import FastAPI
 from strawberry.fastapi import GraphQLRouter
-from typing import List, Union, Optional
+from typing import List
 from strawberry.scalars import JSON
 from services import rules_modules
 

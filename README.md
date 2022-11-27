@@ -21,3 +21,10 @@ Test the api on this link: <br>
 <a href="http://localhost:8000/graphql">http://localhost:8000/graphql</a>
 <br>
 It is the GraphQL Playground.
+
+<h3>Testing the application</h3>
+<br>
+I have used pytest to run several tests on the application. You can see the tests on the folder /tests .
+<br>
+Run the tests by typing the command line: pytest 
+
